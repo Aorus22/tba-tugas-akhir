@@ -11,8 +11,6 @@ const getInput = (query) => {
 }
 
 const main = async () => {
-    const turingMachine = new TuringMachine()
-
     const m = await getInput("Masukkan m: ");
     const n = await getInput("Masukkan n: ");
     rl.close();
@@ -25,8 +23,8 @@ const main = async () => {
         return
     } 
 
+    const turingMachine = new TuringMachine()
     turingMachine.addTapes([turingMachine.generateString(m, n), "   "])
-
     turingMachine.isVisualized = false
     const result = turingMachine.run()
     console.log( "Hasil:\n" + result[1])
