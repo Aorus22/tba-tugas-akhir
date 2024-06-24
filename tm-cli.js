@@ -1,5 +1,5 @@
 import readline from 'readline';
-import TuringMachine from './turingMachine.js';
+import TuringMachine from './turingmachine.js';
 
 const rl = readline.createInterface({
     input: process.stdin,
@@ -23,6 +23,5 @@ const main = async () => {
     const result = turingMachine.run()
     console.log(result[1].length)
 };
-
 
 main();

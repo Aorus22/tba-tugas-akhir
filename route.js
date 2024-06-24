@@ -1,5 +1,5 @@
 import express from 'express';
-import TuringMachine from './turingMachine.js';
+import TuringMachine from './turingmachine.js';
 
 const router = express.Router();
 
