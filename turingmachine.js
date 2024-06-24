@@ -4,6 +4,7 @@ class TuringMachine {
     constructor() {
         this.isVisualized = false
 
+        this.initialState = "q0"
         this.finalStates = "q18"
         this.totalTapes = 2
         this.blankSymbol = " "
@@ -79,7 +80,7 @@ class TuringMachine {
             'q17,1 ': ['q18','1 ','SS'],
         }
 
-        this.currentState = "q0"
+        this.currentState = this.initialState
         this.tapes = [
             // {
             //     content: ["0", "0", "0", "0", "0", "0", "1", "0", "0"],
