@@ -5,7 +5,7 @@ class TuringMachine {
         this.isVisualized = false
 
         this.initialState = "q0"
-        this.finalStates = "q18"
+        this.finalStates = ["q18"]
         this.totalTapes = 2
         this.blankSymbol = " "
         this.transitions = {
@@ -102,7 +102,7 @@ class TuringMachine {
         }
     }
 
-    formatTapes(){
+    formatTapes() {
         return this.tapes.map((tape) => {
             const content = tape.content;
             const formattedContent = content.filter(char => char !== ' ').join('');
@@ -110,7 +110,7 @@ class TuringMachine {
         })
     };
 
-    getTransitionKeys(){
+    getTransitionKeys() {
         let currentSymbols = ""
 
         for (let i = 0; i < this.totalTapes; i++){
@@ -122,8 +122,8 @@ class TuringMachine {
         return `${this.currentState},${currentSymbols}`
     }
 
-    run(){
-        while (this.currentState !== this.finalStates) {
+    run() {
+        while (!this.finalStates.includes(this.currentState)) {
 
             const key = this.getTransitionKeys();
 
@@ -165,7 +165,7 @@ class TuringMachine {
         return this.formatTapes()
     }
 
-    visualizeTapeTerminal(){
+    visualizeTapeTerminal() {
         this.tapes.forEach((tape) => {
             const content = tape.content.map((char, index) => {
                 if (index === tape.head) {

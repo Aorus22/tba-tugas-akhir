@@ -1,1 +1,1 @@
-![Diagram](./diagram.png)
+![Diagram](./public/diagram.png)
