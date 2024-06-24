@@ -17,6 +17,14 @@ const main = async () => {
     const n = await getInput("Masukkan n: ");
     rl.close();
 
+    if(m < 0 || n < 0) {
+        console.log("Nilai m dan n tidak boleh negatif")
+        return
+    } else if (n >= m) {
+        console.log("Nilai n harus kurang dari m")
+        return
+    } 
+
     turingMachine.addTapes([turingMachine.generateString(m, n), "   "])
 
     turingMachine.isVisualized = false
