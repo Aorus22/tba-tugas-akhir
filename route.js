@@ -14,7 +14,7 @@ router.post('/', (req, res) => {
 
     if(mInt < 0 || nInt < 0) {
         return res.render('index', { m: mInt, n: nInt, totalResult: '', result: 'Nilai m dan n tidak boleh negatif' });
-    } else if (nInt >= mInt) {
+    } else if (nInt > mInt) {
         return res.render('index', { m: mInt, n: nInt, totalResult: '', result: 'Nilai n harus kurang dari m' });
     } 
 

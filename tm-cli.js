@@ -18,8 +18,8 @@ const main = async () => {
     if(m < 0 || n < 0) {
         console.log("Nilai m dan n tidak boleh negatif")
         return
-    } else if (n >= m) {
-        console.log("Nilai n harus kurang dari m")
+    } else if (n > m) {
+        console.log("Nilai n tidak boleh lebih dari m")
         return
     } 
 
