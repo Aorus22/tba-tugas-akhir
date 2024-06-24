@@ -19,9 +19,10 @@ const main = async () => {
 
     turingMachine.addTapes([turingMachine.generateString(m, n), "   "])
 
-    turingMachine.isVisualized = true
+    turingMachine.isVisualized = false
     const result = turingMachine.run()
-    console.log(result[1].length)
+    console.log( "Hasil:\n" + result[1])
+    console.log( "Total: " + result[1].length)
 };
 
 main();

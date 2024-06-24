@@ -91,7 +91,7 @@ class TuringMachine {
 
     generateString = (m, n) => '0'.repeat(m) + '1' + '0'.repeat(n);
 
-    addTapes = (tapeContent = [""]) => {
+    addTapes(tapeContent = [""]) {
         for (let i = 0; i < this.totalTapes; i++) {
             const currentContent = [...tapeContent[i]]
             const currentTape = {
@@ -102,7 +102,7 @@ class TuringMachine {
         }
     }
 
-    formatTapes = () => {
+    formatTapes(){
         return this.tapes.map((tape) => {
             const content = tape.content;
             const formattedContent = content.filter(char => char !== ' ').join('');
@@ -110,7 +110,7 @@ class TuringMachine {
         })
     };
 
-    getTransitionKeys = () => {
+    getTransitionKeys(){
         let currentSymbols = ""
 
         for (let i = 0; i < this.totalTapes; i++){
@@ -122,7 +122,7 @@ class TuringMachine {
         return `${this.currentState},${currentSymbols}`
     }
 
-    run() {
+    run(){
         while (this.currentState !== this.finalStates) {
 
             const key = this.getTransitionKeys();
@@ -165,7 +165,7 @@ class TuringMachine {
         return this.formatTapes()
     }
 
-    visualizeTapeTerminal = () => {
+    visualizeTapeTerminal(){
         this.tapes.forEach((tape) => {
             const content = tape.content.map((char, index) => {
                 if (index === tape.head) {
