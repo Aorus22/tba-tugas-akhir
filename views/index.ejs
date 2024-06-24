@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Machine App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        .result {
+            word-wrap: break-word;
+    }
+    </style>
+</head>
+<body class="w-screen h-screen bg-gradient-to-br from-[#b3cde0] to-[#6497b1]">
+    <div class="grid grid-cols-2 min-h-full">
+        <div class="flex flex-col gap-4 p-10 bg-gradient-to-br from-[#005b96] to-[#246691] h-full w-full justify-center items-center rounded-r-3xl shadow-md text-white">
+            <div class="w-full">
+                <form action="/" method="post" class="flex flex-col bg-gradient-to-br from-[#011f4b] to-[#03396c] w-2/3 justify-center items-center rounded-3xl gap-4 p-6 h-fit mx-auto">
+                    <label class="text-lg font-semibold">Masukkan m</label>
+                    <input
+                        name="m"
+                        type="number"
+                        min="0"
+                        class="p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6497b1]"
+                        required
+                        <% if (typeof m !== 'undefined') { %>
+                            value="<%= m %>"
+                        <% } %>
+                    />
+                    <label class="text-lg font-semibold">Masukkan n</label>
+                    <input
+                        name="n"
+                        type="number"
+                        min="0"
+                        class="p-2 border text-black border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#6497b1]"
+                        required
+                        <% if (typeof n !== 'undefined') { %>
+                            value="<%= n %>"
+                        <% } %>
+                    />
+                    <div class="w-full flex justify-center items-center">
+                        <button
+                            type="submit"
+                            class="bg-[#6497b1] hover:bg-[#b3cde0] text-white font-bold py-2 px-4 rounded-md shadow-md transition-colors duration-300"
+                        >
+                            Run
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="m-10 p-10 bg-[#b3cde0] w-[80%] min-h-[90%] max-h-96 overflow-auto rounded-lg shadow-md">
+            <div class="w-full flex justify-center items-center mb-5">
+                <div class="bg-gradient-to-br from-[#011f4b] to-[#03396c] w-fit min-h-24 p-4 px-6 rounded-3xl text-center text-white">
+                    <div class="mb-2 font-bold text-xl">Total</div>
+                    <div id="totalResult" class="max-w-full text-lg"><%= totalResult %></div>
+                </div>
+            </div>
+            <div class="w-full flex justify-center items-center">
+                <div class="w-2/3 max-w-full min-h-20 p-4 rounded-3xl text-center">
+                    <div class="mb-2 font-bold text-xl">Hasil</div>
+                    <div class="max-w-full result">
+                        <%= result %>
+                    </div>
+                </div>
+            </div>
+    </div>
+</body>
+</html>
