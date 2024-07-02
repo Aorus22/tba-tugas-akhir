@@ -9,6 +9,39 @@ class TuringMachine {
         this.totalTapes = 2
         this.blankSymbol = " "
         this.transitions = {
+
+            // 'p0,0 ': ['p0','0 ','RS'],
+            // 'p0,1 ': ['p1','1 ','RS'],
+
+            // 'p1,  ': ['q0','  ','LS'],
+            // 'p1,0 ': ['p2','0 ','RS'],
+            // 'p1,X ': ['p6','X ','RS'],
+
+            // 'p2,0 ': ['p2','0 ','RS'],
+            // 'p2,  ': ['p3','  ','LS'],
+            // 'p2,X ': ['p3','X ','LS'],
+
+            // 'p3,0 ': ['p4','X ','LS'],
+            // 'p3,1 ': ['p6','1 ','RS'],
+
+            // 'p4,0 ': ['p4','0 ','LS'],
+            // 'p4,1 ': ['p4','1 ','LS'],
+            // 'p4,  ': ['p5','  ','RS'],
+            // 'p4,X ': ['p5','X ','RS'],
+
+            // 'p5,0 ': ['p0','X ','RS'],
+            // 'p5,1 ': ['p8','1 ','SS'],
+
+            // 'p6,X ': ['p6','X ','RS'],
+            // 'p6,  ': ['p7','  ','LS'],
+
+            // 'p7,X ': ['p7','0 ','LS'],
+            // 'p7,1 ': ['p7','1 ','LS'],
+            // 'p7,0 ': ['p7','0 ','LS'],
+            // 'p7,  ': ['q0','  ','RS'],
+
+
+
             'q0,0 ': ['q0','0 ','RS'],
             'q0,1 ': ['q0','1 ','RS'],
             'q0,  ': ['q1','  ','LS'],
@@ -92,7 +125,7 @@ class TuringMachine {
 
     generateString = (m, n) => '0'.repeat(m) + '1' + '0'.repeat(n);
 
-    addTapes(tapeContent = [""]) {
+    addTapes(tapeContent) {
         for (let i = 0; i < this.totalTapes; i++) {
             const currentContent = [...tapeContent[i]]
             const currentTape = {
@@ -111,7 +144,7 @@ class TuringMachine {
         })
     };
 
-    getTransitionKeys() {
+    getTransitionKey() {
         let currentSymbols = ""
 
         for (let i = 0; i < this.totalTapes; i++){
@@ -126,7 +159,7 @@ class TuringMachine {
     run() {
         while (!this.finalStates.includes(this.currentState)) {
 
-            const key = this.getTransitionKeys();
+            const key = this.getTransitionKey();
 
             if(this.isVisualized === true){
                 this.visualizeTapeTerminal()
@@ -134,6 +167,9 @@ class TuringMachine {
 
             try {
                 const [ newState, writeSymbol, direction ] = this.transitions[key]
+
+                // console.log(key)
+                // console.log(`${newState} - ${writeSymbol} - ${direction}` )
 
                 this.currentState = newState;
 
@@ -157,8 +193,8 @@ class TuringMachine {
                     }
                 }
             } catch (error) {
-                console.error(error)
-                console.error(`Error: Transisi tidak ditemukan untuk ${key}`);
+                // console.error(`Error: Transisi tidak ditemukan untuk ${key}`);
+                console.error(`Error: undefined`);
                 break;
             }
         }
